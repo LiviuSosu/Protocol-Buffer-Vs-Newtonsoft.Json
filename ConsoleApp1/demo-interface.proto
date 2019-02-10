@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+package tutorial;
+
+option csharp_namespace = "Google.Protobuf.Examples.AddressBook";
+
+message Books{
+	message BookInfo {
+	  int32 id = 1; 
+	  string title = 3;
+	  int32 pageCount = 4;
+
+	  message Author {
+		string name = 1;
+		int32 age = 2;
+	  }
+
+	  Author author = 5;
+
+	}
+
+	repeated BookInfo  books= 1;
+}
