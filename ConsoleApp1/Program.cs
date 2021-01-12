@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using static Google.Protobuf.Examples.AddressBook.Books.Types;
 using static Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types;
 
@@ -81,12 +83,16 @@ namespace ConsoleApp1
             var sw = new Stopwatch();
             sw.Start();
 
-            //make sure to adapt file path in order to work properly
-            string fileName = @"C:\Users\lsosu\Work\Protobuf\ConsoleApp1\ConsoleApp1\data.json";
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = "ProtobuffVsJson.Data.data.json";
+            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                string result = reader.ReadToEnd();
+            }
 
-            File.WriteAllText(fileName, JsonConvert.SerializeObject(books));
-
-            books = JsonConvert.DeserializeObject<List<BookInfoJson>>(File.ReadAllText(fileName));
+            books = JsonConvert.DeserializeObject<List<BookInfoJson>>(File.ReadAllText(resourceName));
+            File.WriteAllText(resourceName, JsonConvert.SerializeObject(books));
             sw.Stop();
             long elapsedMilliseconds = sw.ElapsedMilliseconds;
         }
