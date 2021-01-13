@@ -8,6 +8,7 @@ message Books{
 	  int32 id = 1; 
 	  string title = 3;
 	  int32 pageCount = 4;
+	  string description = 6;
 
 	  message Author {
 		string name = 1;

@@ -24,17 +24,17 @@ namespace Google.Protobuf.Examples.AddressBook {
     static DemoInterfaceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChRkZW1vLWludGVyZmFjZS5wcm90bxIIdHV0b3JpYWwiwQEKBUJvb2tzEicK",
-            "BWJvb2tzGAEgAygLMhgudHV0b3JpYWwuQm9va3MuQm9va0luZm8ajgEKCEJv",
+            "ChRkZW1vLWludGVyZmFjZS5wcm90bxIIdHV0b3JpYWwi1gEKBUJvb2tzEicK",
+            "BWJvb2tzGAEgAygLMhgudHV0b3JpYWwuQm9va3MuQm9va0luZm8aowEKCEJv",
             "b2tJbmZvEgoKAmlkGAEgASgFEg0KBXRpdGxlGAMgASgJEhEKCXBhZ2VDb3Vu",
-            "dBgEIAEoBRIvCgZhdXRob3IYBSABKAsyHy50dXRvcmlhbC5Cb29rcy5Cb29r",
-            "SW5mby5BdXRob3IaIwoGQXV0aG9yEgwKBG5hbWUYASABKAkSCwoDYWdlGAIg",
-            "ASgFQieqAiRHb29nbGUuUHJvdG9idWYuRXhhbXBsZXMuQWRkcmVzc0Jvb2ti",
-            "BnByb3RvMw=="));
+            "dBgEIAEoBRITCgtkZXNjcmlwdGlvbhgGIAEoCRIvCgZhdXRob3IYBSABKAsy",
+            "Hy50dXRvcmlhbC5Cb29rcy5Cb29rSW5mby5BdXRob3IaIwoGQXV0aG9yEgwK",
+            "BG5hbWUYASABKAkSCwoDYWdlGAIgASgFQieqAiRHb29nbGUuUHJvdG9idWYu",
+            "RXhhbXBsZXMuQWRkcmVzc0Jvb2tiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books), global::Google.Protobuf.Examples.AddressBook.Books.Parser, new[]{ "Books_" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Parser, new[]{ "Id", "Title", "PageCount", "Author" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author.Parser, new[]{ "Name", "Age" }, null, null, null)})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books), global::Google.Protobuf.Examples.AddressBook.Books.Parser, new[]{ "Books_" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Parser, new[]{ "Id", "Title", "PageCount", "Description", "Author" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author.Parser, new[]{ "Name", "Age" }, null, null, null)})})
           }));
     }
     #endregion
@@ -192,6 +192,7 @@ namespace Google.Protobuf.Examples.AddressBook {
           id_ = other.id_;
           title_ = other.title_;
           pageCount_ = other.pageCount_;
+          description_ = other.description_;
           author_ = other.author_ != null ? other.author_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
@@ -234,6 +235,17 @@ namespace Google.Protobuf.Examples.AddressBook {
           }
         }
 
+        /// <summary>Field number for the "description" field.</summary>
+        public const int DescriptionFieldNumber = 6;
+        private string description_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string Description {
+          get { return description_; }
+          set {
+            description_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
         /// <summary>Field number for the "author" field.</summary>
         public const int AuthorFieldNumber = 5;
         private global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author author_;
@@ -261,6 +273,7 @@ namespace Google.Protobuf.Examples.AddressBook {
           if (Id != other.Id) return false;
           if (Title != other.Title) return false;
           if (PageCount != other.PageCount) return false;
+          if (Description != other.Description) return false;
           if (!object.Equals(Author, other.Author)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -271,6 +284,7 @@ namespace Google.Protobuf.Examples.AddressBook {
           if (Id != 0) hash ^= Id.GetHashCode();
           if (Title.Length != 0) hash ^= Title.GetHashCode();
           if (PageCount != 0) hash ^= PageCount.GetHashCode();
+          if (Description.Length != 0) hash ^= Description.GetHashCode();
           if (author_ != null) hash ^= Author.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -301,6 +315,10 @@ namespace Google.Protobuf.Examples.AddressBook {
             output.WriteRawTag(42);
             output.WriteMessage(Author);
           }
+          if (Description.Length != 0) {
+            output.WriteRawTag(50);
+            output.WriteString(Description);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -317,6 +335,9 @@ namespace Google.Protobuf.Examples.AddressBook {
           }
           if (PageCount != 0) {
             size += 1 + pb::CodedOutputStream.ComputeInt32Size(PageCount);
+          }
+          if (Description.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
           }
           if (author_ != null) {
             size += 1 + pb::CodedOutputStream.ComputeMessageSize(Author);
@@ -340,6 +361,9 @@ namespace Google.Protobuf.Examples.AddressBook {
           }
           if (other.PageCount != 0) {
             PageCount = other.PageCount;
+          }
+          if (other.Description.Length != 0) {
+            Description = other.Description;
           }
           if (other.author_ != null) {
             if (author_ == null) {
@@ -375,6 +399,10 @@ namespace Google.Protobuf.Examples.AddressBook {
                   author_ = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
                 }
                 input.ReadMessage(author_);
+                break;
+              }
+              case 50: {
+                Description = input.ReadString();
                 break;
               }
             }

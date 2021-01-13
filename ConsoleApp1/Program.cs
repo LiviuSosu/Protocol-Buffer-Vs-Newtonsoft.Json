@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using static Google.Protobuf.Examples.AddressBook.Books.Types;
 using static Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types;
@@ -14,11 +13,14 @@ namespace ConsoleApp1
 {
     class Program
     {
+        const string jsonDataFile = "ProtobuffVsJson.Data.data.json";
+        const string protoDataFile = "ProtobuffVsJson.Data.data.dat";
+
         static void Main(string[] args)
         {
             int dataSize = 100000;
-            //SerializeProtoBuff(dataSize);
-            SerializeJson(dataSize);
+            SerializeProtoBuff(dataSize);
+            //SerializeJson(dataSize);
 
             Console.WriteLine("Finished!");
             Console.ReadKey();
@@ -37,6 +39,7 @@ namespace ConsoleApp1
                     Author = new Author() { Name = "Author name " + i },
                     Title = "Title " + i,
                     PageCount = i,
+                    Description = (i*i).ToString()
                 };
 
                 books.Books_.Add(bookInfo);
@@ -45,15 +48,14 @@ namespace ConsoleApp1
             var sw = new Stopwatch();
             sw.Start();
 
-            //make sure to adapt file path in order to work properly
-            string fileName = @"C:\Users\lsosu\Work\Protobuf\ConsoleApp1\ConsoleApp1\data.dat";
+            var assembly = Assembly.GetExecutingAssembly();
 
-            using (var output = File.Create(fileName))
+            using (var output = File.Create(protoDataFile))
             {
                 books.WriteTo(output);
             }
 
-            using (var input = File.OpenRead(fileName))
+            using (var input = File.OpenRead(protoDataFile))
             {
                 books = Books.Parser.ParseFrom(input);
             }
@@ -74,7 +76,8 @@ namespace ConsoleApp1
                     Id = i,
                     Author = new AuthorJson() { Name = "Author name " + i },
                     Title = "Title " + i,
-                    PageCount = i
+                    PageCount = i,
+                    
                 };
 
                 books.Add(bookInfo);
@@ -84,15 +87,15 @@ namespace ConsoleApp1
             sw.Start();
 
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "ProtobuffVsJson.Data.data.json";
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+       
+            using (Stream stream = assembly.GetManifestResourceStream(jsonDataFile))
             using (StreamReader reader = new StreamReader(stream))
             {
                 string result = reader.ReadToEnd();
             }
 
-            books = JsonConvert.DeserializeObject<List<BookInfoJson>>(File.ReadAllText(resourceName));
-            File.WriteAllText(resourceName, JsonConvert.SerializeObject(books));
+            books = JsonConvert.DeserializeObject<List<BookInfoJson>>(File.ReadAllText(jsonDataFile));
+            File.WriteAllText(jsonDataFile, JsonConvert.SerializeObject(books));
             sw.Stop();
             long elapsedMilliseconds = sw.ElapsedMilliseconds;
         }
