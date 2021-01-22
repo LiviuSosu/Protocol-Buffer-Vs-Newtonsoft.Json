@@ -33,15 +33,19 @@ namespace Google.Protobuf.Examples.AddressBook {
             "RXhhbXBsZXMuQWRkcmVzc0Jvb2tiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books), global::Google.Protobuf.Examples.AddressBook.Books.Parser, new[]{ "Books_" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Parser, new[]{ "Id", "Title", "PageCount", "Description", "Author" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author.Parser, new[]{ "Name", "Age" }, null, null, null)})})
+          new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books), global::Google.Protobuf.Examples.AddressBook.Books.Parser, new[]{ "Books_" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Parser, new[]{ "Id", "Title", "PageCount", "Description", "Author" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author), global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author.Parser, new[]{ "Name", "Age" }, null, null, null, null)})})
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class Books : pb::IMessage<Books> {
+  public sealed partial class Books : pb::IMessage<Books>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
     private static readonly pb::MessageParser<Books> _parser = new pb::MessageParser<Books>(() => new Books());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -119,11 +123,25 @@ namespace Google.Protobuf.Examples.AddressBook {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
       books_.WriteTo(output, _repeated_books_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      books_.WriteTo(ref output, _repeated_books_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
@@ -146,6 +164,9 @@ namespace Google.Protobuf.Examples.AddressBook {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
         switch(tag) {
@@ -158,13 +179,36 @@ namespace Google.Protobuf.Examples.AddressBook {
           }
         }
       }
+    #endif
     }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            books_.AddEntriesFrom(ref input, _repeated_books_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
 
     #region Nested types
     /// <summary>Container for nested types declared in the Books message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
-      public sealed partial class BookInfo : pb::IMessage<BookInfo> {
+      public sealed partial class BookInfo : pb::IMessage<BookInfo>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
         private static readonly pb::MessageParser<BookInfo> _parser = new pb::MessageParser<BookInfo>(() => new BookInfo());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -299,6 +343,9 @@ namespace Google.Protobuf.Examples.AddressBook {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
           if (Id != 0) {
             output.WriteRawTag(8);
             output.WriteInt32(Id);
@@ -322,7 +369,37 @@ namespace Google.Protobuf.Examples.AddressBook {
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
+        #endif
         }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (Id != 0) {
+            output.WriteRawTag(8);
+            output.WriteInt32(Id);
+          }
+          if (Title.Length != 0) {
+            output.WriteRawTag(26);
+            output.WriteString(Title);
+          }
+          if (PageCount != 0) {
+            output.WriteRawTag(32);
+            output.WriteInt32(PageCount);
+          }
+          if (author_ != null) {
+            output.WriteRawTag(42);
+            output.WriteMessage(Author);
+          }
+          if (Description.Length != 0) {
+            output.WriteRawTag(50);
+            output.WriteString(Description);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public int CalculateSize() {
@@ -367,7 +444,7 @@ namespace Google.Protobuf.Examples.AddressBook {
           }
           if (other.author_ != null) {
             if (author_ == null) {
-              author_ = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
+              Author = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
             }
             Author.MergeFrom(other.Author);
           }
@@ -376,6 +453,9 @@ namespace Google.Protobuf.Examples.AddressBook {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
             switch(tag) {
@@ -396,9 +476,46 @@ namespace Google.Protobuf.Examples.AddressBook {
               }
               case 42: {
                 if (author_ == null) {
-                  author_ = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
+                  Author = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
                 }
-                input.ReadMessage(author_);
+                input.ReadMessage(Author);
+                break;
+              }
+              case 50: {
+                Description = input.ReadString();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 8: {
+                Id = input.ReadInt32();
+                break;
+              }
+              case 26: {
+                Title = input.ReadString();
+                break;
+              }
+              case 32: {
+                PageCount = input.ReadInt32();
+                break;
+              }
+              case 42: {
+                if (author_ == null) {
+                  Author = new global::Google.Protobuf.Examples.AddressBook.Books.Types.BookInfo.Types.Author();
+                }
+                input.ReadMessage(Author);
                 break;
               }
               case 50: {
@@ -408,12 +525,17 @@ namespace Google.Protobuf.Examples.AddressBook {
             }
           }
         }
+        #endif
 
         #region Nested types
         /// <summary>Container for nested types declared in the BookInfo message type.</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         public static partial class Types {
-          public sealed partial class Author : pb::IMessage<Author> {
+          public sealed partial class Author : pb::IMessage<Author>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
             private static readonly pb::MessageParser<Author> _parser = new pb::MessageParser<Author>(() => new Author());
             private pb::UnknownFieldSet _unknownFields;
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -506,6 +628,9 @@ namespace Google.Protobuf.Examples.AddressBook {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
               if (Name.Length != 0) {
                 output.WriteRawTag(10);
                 output.WriteString(Name);
@@ -517,7 +642,25 @@ namespace Google.Protobuf.Examples.AddressBook {
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
+            #endif
             }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (Name.Length != 0) {
+                output.WriteRawTag(10);
+                output.WriteString(Name);
+              }
+              if (Age != 0) {
+                output.WriteRawTag(16);
+                output.WriteInt32(Age);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public int CalculateSize() {
@@ -550,6 +693,9 @@ namespace Google.Protobuf.Examples.AddressBook {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
               uint tag;
               while ((tag = input.ReadTag()) != 0) {
                 switch(tag) {
@@ -566,7 +712,30 @@ namespace Google.Protobuf.Examples.AddressBook {
                   }
                 }
               }
+            #endif
             }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+                switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Name = input.ReadString();
+                    break;
+                  }
+                  case 16: {
+                    Age = input.ReadInt32();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
 
           }
 
