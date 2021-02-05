@@ -10,7 +10,9 @@ You will find the protoc.exe in this repository. However it my be outdated, so y
 
 We will continue this article by showing you how to run the Protobuf command.
 
-Go the the location where you have the protoc.exe downloaded. Oppen any commadn line utitliy. There is no need to run it as administrator.
+Go the the location where you have the protoc.exe downloaded. Open any command line utility. There is no need to run it as administrator.
+
+The command should look like:
 
 protoc -I="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" --csharp_out="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" "C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1\demo-interface.proto"
 
