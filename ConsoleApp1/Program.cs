@@ -86,6 +86,8 @@ namespace ConsoleApp1
             var sw = new Stopwatch();
             sw.Start();
 
+            File.WriteAllText(jsonDataFile, JsonConvert.SerializeObject(books));
+
             var assembly = Assembly.GetExecutingAssembly();
        
             using (Stream stream = assembly.GetManifestResourceStream(jsonDataFile))
@@ -95,7 +97,6 @@ namespace ConsoleApp1
             }
 
             books = JsonConvert.DeserializeObject<List<BookInfoJson>>(File.ReadAllText(jsonDataFile));
-            File.WriteAllText(jsonDataFile, JsonConvert.SerializeObject(books));
             sw.Stop();
             long elapsedMilliseconds = sw.ElapsedMilliseconds;
         }
