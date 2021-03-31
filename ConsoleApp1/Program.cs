@@ -19,10 +19,11 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             int dataSize = 100000;
-            SerializeProtoBuff(dataSize);
-            //SerializeJson(dataSize);
 
-            Console.WriteLine("Finished!");
+            SerializeProtoBuff(dataSize);
+            Console.WriteLine("Finished! protobuf");
+            SerializeJson(dataSize);
+            Console.WriteLine("Finished! json");
             Console.ReadKey();
         }
 
