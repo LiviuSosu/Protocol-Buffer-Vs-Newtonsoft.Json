@@ -14,7 +14,11 @@ Go the the location where you have the protoc.exe downloaded. Open any command l
 
 The command should look like:
 
-protoc -I="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" --csharp_out="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" "C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1\demo-interface.proto"
+---
+
+> protoc -I="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" --csharp_out="C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1" "C:\Users\Liviu\Career\Articles\Protocol-Buffer-Vs-Newtonsoft.Json\ConsoleApp1\demo-interface.proto"
+
+---
 
 We will skip showing how to utilize the NewtonSoft.Json library.
 
