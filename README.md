@@ -12,6 +12,12 @@ We will continue this article by showing you how to run the Protobuf command.
 
 Go the the location where you have the protoc.exe downloaded. Open any command line utility. There is no need to run it as administrator.
 
+The command has the following pattern:
+
+---
+> protoc -I="_your_class_path_" --cdharp_out="_your_path_where_you_want_your_otputed_proto_class_" "_your_proto_executable_"
+---
+
 The command should look like:
 
 ---
