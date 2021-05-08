@@ -2,7 +2,11 @@
 
 Comparison bewteen Google Protocol Buffer and Newtonsoft.Json. 
 
-Video may be found here: https://youtu.be/KNi18e0p7zQ
+Video may be found here:
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=KNi18e0p7zQ
+" target="_blank"><img src="http://img.youtube.com/vi/KNi18e0p7zQ/0.jpg" 
+alt="[.NET Core] Comparison between Protocol buffer vs Newtonsoft.Json" width="240" height="180" border="10" /></a>
 
 Google Protocol Serializer documentation: https://developers.google.com/protocol-buffers/docs/csharptutorial 
 
