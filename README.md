@@ -30,10 +30,12 @@ The command should look like:
 
 ---
 
-Right now all you have to do is to run the solution and two methods will be called:
+Right now, all you have to do is to run the solution and two methods will be called:
 > SerializeProtoBuff(dataSize)
   and
->SerializeJson(dataSize)
+> SerializeJson(dataSize)
+
+
 
 We will skip showing how to utilize the NewtonSoft.Json library.
 
